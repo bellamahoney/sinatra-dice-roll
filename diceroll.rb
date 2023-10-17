@@ -1,9 +1,8 @@
 require "sinatra"
 require "sinatra/reloader"
+require "better_errors"
+require "binding_of_caller"
 
-get ("/") do 
-  return "Hello world!"
-  end 
 
   get("/zebra") do
     "We must add a route for each path we want to support"
@@ -57,3 +56,20 @@ get "/dice/1/20" do
     "<h1>5d4</h1>
     <p1>#{outcome}</p1>"
     end 
+
+    get("/") do
+      "
+      <h1>Dice Roll</h1>
+      
+      <ul>
+        <li><a href=\"/dice/2/6\">Roll two 6-sided dice</a></li>
+        <li><a href=\"/dice/2/10\">Roll two 10-sided dice</a></li>
+        <li><a href=\"/dice/1/20\">Roll one 20-sided die</a></li>
+        <li><a href=\"/dice/5/4\">Roll five 4-sided dice</a></li>
+      </ul>
+      "
+    end
+
+    get("/") do
+      erb(:elephant)
+    end
